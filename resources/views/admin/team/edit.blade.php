@@ -44,8 +44,8 @@
  <div class="form-group">
         <label class="col-md-3 control-label" for="member_role">Role</label>
         <div class="col-md-9">
-            <select id="member_role" name="member_role"  class="select-select2" style="width: 100%;" >
-   
+            <select id="member_role" name="role_id" selected="selected" class="select-select2" style="width: 100%;" >
+           <option>{{$roles[$teammember->role_id]}}</option>
             @foreach($roles as $key => $r)
                 <option value="{{$key}}">{{$r}}</option>
             @endforeach
@@ -80,7 +80,7 @@
 
         <div class="form-group form-actions">
             <div class="col-md-9 col-md-offset-3">
-                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Add</button>
+                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Save</button>
                 
                   <a class="btn btn-sm btn-primary" href="{{url('/admin/teams')}}"> Back 
                         <i class="fa fa-reply" aria-hidden="true"></i> 

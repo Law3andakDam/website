@@ -81,7 +81,9 @@ class TeamMembersController extends Controller
     
     
     public function update( TeamRequest $request, TeamMember $teammember){
-       $update = $teammember->find( $request->id);
+      
+       $update = $teammember->find($request->id);
+
         
        $update->fill(array_except($request->all(),['member_image']))->save();
         
