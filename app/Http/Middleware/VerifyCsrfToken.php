@@ -12,6 +12,33 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+
+        // roles
+         
+        'admin/roles/create',
+        'admin/roles/{id}/edit',
+        'admin/roles/{id}/delete',
+        'admin/roles/update',
+
+        
+        // teams
+        'admin/teams/create', 
+        'admin/teams/{id}/edit',
+        'admin/teams/{id}/delete',
+        'admin/teams/update',
+
+        // Blood Types
+        'admin/blood_types/create',
+        'admin/blood_types/{id}/edit',
+        'admin/blood_types/{id}/delete',
+        'admin/blood_types/update',
+
+
+        // Doners
+        'admin/doners/create',
+
+        
+       
+        
     ];
 }
