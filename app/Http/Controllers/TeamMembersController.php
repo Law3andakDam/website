@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\TeamMember;
 use App\TeamRole;
+use App\User;
 
 use Datatables;
 use DB;
@@ -45,11 +46,12 @@ class TeamMembersController extends Controller
           
           $image = $fileName;
           
-      }
-      else{
-          $image ='';
-      }
+            }
 
+          else{
+          $image ='';
+           }
+    
         
 
 
@@ -61,6 +63,12 @@ class TeamMembersController extends Controller
             'role_id'=>$request->member_role,
                
         ]);
+
+         $user = User::create([
+        'email' => $request->member_email,
+        'password' => bcrypt("l3d123456"),
+        'admin' => 1
+    ]);
         
          return redirect('admin/teams')->withFlashMessage('Team Member Added Successfully');
     }
@@ -81,12 +89,18 @@ class TeamMembersController extends Controller
     
     
     public function update( TeamRequest $request, TeamMember $teammember){
-      
+  
+  
        $update = $teammember->find($request->id);
 
-        
-       $update->fill(array_except($request->all(),['member_image']))->save();
-        
+        // if Role updated role id retrieved as number.
+        if(is_int($request->role_id)){
+           $update->fill(array_except($request->all(),['member_image']))->save();
+         }
+        // if Role is not updated role id retrieved as string.
+         else{
+           $update->fill(array_except($request->all(),['member_image','role_id']))->save();
+
        if($request->file('member_image')){
            
             $fileName = $request->file('member_image')->getClientOriginalName();   
@@ -95,7 +109,11 @@ class TeamMembersController extends Controller
             );
            
            $update->fill(['member_image'=>$fileName])->save();
-       } 
+             } 
+         }
+     
+
+
        return redirect('admin/teams')->withFlashMessage('Team Member Updated Successfully');;
     }
     

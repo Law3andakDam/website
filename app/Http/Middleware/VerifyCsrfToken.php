@@ -37,6 +37,9 @@ class VerifyCsrfToken extends BaseVerifier
         // Doners
         'admin/doners/create',
 
+        // site setting
+        'admin/contact_settings',
+
         
        
         

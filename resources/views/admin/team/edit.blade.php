@@ -32,7 +32,21 @@
 
 <!-- Name -->
         <div class="form-group">
+
+             <div class="clearfix"></div>
+                                
+                             @if(isset($teammember))  <!-- teammember param from edit.blade.php form -->
+                              @if($teammember->member_image != '')
+                           <div style="width:500px; margin:0 auto;">
+                                <img src="{{ Request::root().'/team_images/'.$teammember->member_image}}" alt="avatar" class="img-circle" width="150">
+                            </div><br>
+                              @endif
+                              @endif
+                                
+            <div class="clearfix"></div>
+
             <label class="col-md-3 control-label" for="member_image">Personal Image</label>
+
             <div class="col-md-9">
                 <input type="file"   name="member_image" class="form-control">  
             </div>
@@ -44,7 +58,7 @@
  <div class="form-group">
         <label class="col-md-3 control-label" for="member_role">Role</label>
         <div class="col-md-9">
-            <select id="member_role" name="role_id" selected="selected" class="select-select2" style="width: 100%;" >
+            <select id="member_role" name="role_id"  class="select-select2" style="width: 100%;" >
            <option>{{$roles[$teammember->role_id]}}</option>
             @foreach($roles as $key => $r)
                 <option value="{{$key}}">{{$r}}</option>
