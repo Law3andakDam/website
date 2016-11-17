@@ -4,11 +4,20 @@
 use Yajra\Datatables\Datatables;
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
 
 # Admin 
 Route::group(['prefix' =>'admin/'], function (){
 
 
+
+Route::get('/dashboard', function () {return view('admin.dashboard');});
+
+
+Route::get('admin/login', function () {return view('admin.login');});
 	
  #datatables
  Route::get('roles/data',['as'=>'admin.roles.data', 'uses'=>'TeamRolesController@anyData']);
@@ -21,9 +30,6 @@ Route::group(['prefix' =>'admin/'], function (){
  Route::get('/doners/data',['as'=>'admin.Doners.data', 'uses'=>'DonersController@anyData']);
 
 
-# Login and landing page
-Route::get('login', function () {return view('admin.login');});
-Route::get('dashboard', function () {return view('admin.dashboard');});
 
 
 
@@ -63,6 +69,9 @@ Route::post('/doners/create', 'DonersController@store');
 # site seting
 Route::get('/contact_settings', 'SiteSettingsController@ContactsIndex');
 Route::post('/contact_settings', 'SiteSettingsController@ContactsStore');
+
+Route::get('/cms_settings', 'SiteSettingsController@CMS_Index');
+Route::post('/cms_settings', 'SiteSettingsController@CMS_Store');
 
 });
 

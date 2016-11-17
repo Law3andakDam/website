@@ -1,161 +1,140 @@
 @extends('admin.layouts.layout')
 
+<?php use App\Doner; ?>
+
 @section('content')
-                    <!-- Page content -->
-                    <div id="page-content">
-                        <!-- Dashboard Header -->
-                        <!-- For an image header add the class 'content-header-media' and an image as in the following example -->
-                        <div class="content-header content-header-media">
-                            <div class="header-section">
-                                <div class="row">
-                                    <!-- Main Title (hidden on small devices for the statistics to fit) -->
-                                    <div class="col-md-4 col-lg-6 hidden-xs hidden-sm">
-                                        <h1>Welcome <strong>Admin</strong><br><small>You Look Awesome!</small></h1>
-                                    </div>
-                                    <!-- END Main Title -->
+  <!-- Page content -->
+  <div id="page-content">
 
-                                    <!-- Top Stats -->
-                                    <div class="col-md-8 col-lg-6">
-                                        <div class="row text-center">
-                                            <div class="col-xs-4 col-sm-3">
-                                                <h2 class="animation-hatch">
-                                                    $<strong>93.7k</strong><br>
-                                                    <small><i class="fa fa-thumbs-o-up"></i> Great</small>
-                                                </h2>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-3">
-                                                <h2 class="animation-hatch">
-                                                    <strong>167k</strong><br>
-                                                    <small><i class="fa fa-heart-o"></i> Likes</small>
-                                                </h2>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-3">
-                                                <h2 class="animation-hatch">
-                                                    <strong>101</strong><br>
-                                                    <small><i class="fa fa-calendar-o"></i> Events</small>
-                                                </h2>
-                                            </div>
-                                            <!-- We hide the last stat to fit the other 3 on small devices -->
-                                            <div class="col-sm-3 hidden-xs">
-                                                <h2 class="animation-hatch">
-                                                    <strong>27&deg; C</strong><br>
-                                                    <small><i class="fa fa-map-marker"></i> Sydney</small>
-                                                </h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- END Top Stats -->
-                                </div>
-                            </div>
-                            <!-- For best results use an image with a resolution of 2560x248 pixels (You can also use a blurred image with ratio 10:1 - eg: 1000x100 pixels - it will adjust and look great!) -->
-                            <img src="{{URL::asset('img/placeholders/headers/dashboard_header.jpg')}}" alt="header image" class="animation-pulseSlow">
-                        </div>
-                        <!-- END Dashboard Header -->
 
-                        <!-- Mini Top Stats Row -->
-                        <div class="row">
-                            <div class="col-sm-6 col-lg-3">
-                                <!-- Widget -->
-                                <a href="page_ready_article.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
-                                            <i class="fa fa-file-text"></i>
-                                        </div>
-                                        <h3 class="widget-content text-right animation-pullDown">
-                                            New <strong>Article</strong><br>
-                                            <small>Mountain Trip</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <!-- Widget -->
-                                <a href="page_comp_charts.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background-spring animation-fadeIn">
-                                            <i class="gi gi-usd"></i>
-                                        </div>
-                                        <h3 class="widget-content text-right animation-pullDown">
-                                            + <strong>250%</strong><br>
-                                            <small>Sales Today</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <!-- Widget -->
-                                <a href="page_ready_inbox.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background-fire animation-fadeIn">
-                                            <i class="gi gi-envelope"></i>
-                                        </div>
-                                        <h3 class="widget-content text-right animation-pullDown">
-                                            5 <strong>Messages</strong>
-                                            <small>Support Center</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <!-- Widget -->
-                                <a href="page_comp_gallery.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
-                                            <i class="gi gi-picture"></i>
-                                        </div>
-                                        <h3 class="widget-content text-right animation-pullDown">
-                                            +30 <strong>Photos</strong>
-                                            <small>Gallery</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                            <div class="col-sm-6">
-                                <!-- Widget -->
-                                <a href="page_comp_charts.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background animation-fadeIn">
-                                            <i class="gi gi-wallet"></i>
-                                        </div>
-                                        <div class="pull-right">
-                                            <!-- Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about -->
-                                            <span id="mini-chart-sales"></span>
-                                        </div>
-                                        <h3 class="widget-content animation-pullDown visible-lg">
-                                            Latest <strong>Sales</strong>
-                                            <small>Per hour</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                            <div class="col-sm-6">
-                                <!-- Widget -->
-                                <a href="page_widgets_stats.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background animation-fadeIn">
-                                            <i class="gi gi-crown"></i>
-                                        </div>
-                                        <div class="pull-right">
-                                            <!-- Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about -->
-                                            <span id="mini-chart-brand"></span>
-                                        </div>
-                                        <h3 class="widget-content animation-pullDown visible-lg">
-                                            Our <strong>Brand</strong>
-                                            <small>Popularity over time</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
-                        </div>
-                        <!-- END Mini Top Stats Row -->                        
-                    </div>
-                    <!-- END Page Content -->
+              
+    <!-- Small boxes (Stat box) -->
+      <div class="row">
+
+       <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php echo Doner::count(); ?></h3>
+
+              <p>Doners</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-heart"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>0</h3>
+
+              <p>Cases</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+         <!-- ./col -->
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>0<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+         <!-- ./col -->
+
+         <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>0</h3>
+
+              <p>Messages</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-envelope-o"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+            
+      </div>
+      <!-- /.row -->
+
+            <!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Monthly Recap Report</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-wrench"></i></button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="text-center">
+                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                  </p>
+
+                  <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                  </div>
+                  <!-- /.chart-responsive -->
+                </div>
+
+             
+              </div>
+              <!-- /.row -->
+            </div>
+           
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->                       
+</div>
+<!-- END Page Content -->
 @endsection
 
 

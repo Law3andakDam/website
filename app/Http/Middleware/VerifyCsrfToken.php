@@ -13,8 +13,9 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
 
+      
+
         // roles
-         
         'admin/roles/create',
         'admin/roles/{id}/edit',
         'admin/roles/{id}/delete',
@@ -39,6 +40,7 @@ class VerifyCsrfToken extends BaseVerifier
 
         // site setting
         'admin/contact_settings',
+        'admin/cms_settings',
 
         
        

@@ -55,7 +55,7 @@
 
 
 <li>
-    <a href="page_widgets_social.html"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Policy</span></a>
+    <a href="{{url('/admin/cms_settings')}}"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Setting</span></a>
 </li>
 
 <li>

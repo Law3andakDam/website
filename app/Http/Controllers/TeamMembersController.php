@@ -64,18 +64,13 @@ class TeamMembersController extends Controller
                
         ]);
 
-         $user = User::create([
-        'email' => $request->member_email,
-        'password' => bcrypt("l3d123456"),
-        'admin' => 1
-    ]);
         
          return redirect('admin/teams')->withFlashMessage('Team Member Added Successfully');
     }
     
     public function delete($id , TeamMember $teammember){
         $teammember->find($id)->delete();
-         return redirect('admin/teams');
+         return redirect('admin/teams')->withFlashMessage('Team Member Deleted Successfully');;
     }
     
     
@@ -89,17 +84,31 @@ class TeamMembersController extends Controller
     
     
     public function update( TeamRequest $request, TeamMember $teammember){
-  
-  
-       $update = $teammember->find($request->id);
+     
+        $roles = TeamRole::pluck('role');
+        $arr[] = (array)$roles;
+        $found = 0;
+          
 
-        // if Role updated role id retrieved as number.
-        if(is_int($request->role_id)){
-           $update->fill(array_except($request->all(),['member_image']))->save();
-         }
-        // if Role is not updated role id retrieved as string.
-         else{
-           $update->fill(array_except($request->all(),['member_image','role_id']))->save();
+
+      
+     
+        foreach ($roles as $key => $value) {
+            if($value == $request->role_id){$found = 1;}
+        
+        }
+
+        if($found == 1){ 
+
+          $update = $teammember->find($request->id);
+          $update->fill(array_except($request->all(),['member_image','role_id']))->save();
+
+        }else{
+           $update = $teammember->find($request->id);
+             $update->fill(array_except($request->all(),['member_image']))->save();
+        }
+
+           
 
        if($request->file('member_image')){
            
@@ -109,12 +118,9 @@ class TeamMembersController extends Controller
             );
            
            $update->fill(['member_image'=>$fileName])->save();
-             } 
-         }
-     
-
-
-       return redirect('admin/teams')->withFlashMessage('Team Member Updated Successfully');;
+         } 
+         
+       return redirect('admin/teams')->withFlashMessage('Team Member Updated Successfully');
     }
     
   

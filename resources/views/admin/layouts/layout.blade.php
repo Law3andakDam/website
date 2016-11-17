@@ -13,6 +13,48 @@
 
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
+<!-- new dashord -->
+  
+      <!-- Bootstrap 3.3.6 -->
+     {!! Html::style('asset/bootstrap/css/bootstrap.min.css') !!}
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+    {!! Html::style('asset/dist/css/AdminLTE.min.css') !!}
+ 
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    {!! Html::style('asset/dist/css/skins/_all-skins.min.css') !!}
+ 
+  <!-- iCheck -->
+    {!! Html::style('asset/plugins/iCheck/flat/blue.css') !!}
+  
+  <!-- Morris chart -->
+    {!! Html::style('asset/plugins/morris/morris.css') !!}
+
+  <!-- jvectormap -->
+    {!! Html::style('asset/plugins/jvectormap/jquery-jvectormap-1.2.2.css') !!}
+  
+  <!-- Date Picker -->
+    {!! Html::style('asset/plugins/datepicker/datepicker3.css') !!}
+ 
+  <!-- Daterange picker -->
+    {!! Html::style('asset/plugins/daterangepicker/daterangepicker.css') !!}
+  
+  <!-- bootstrap wysihtml5 - text editor -->
+    {!! Html::style('asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
+<!-- new dashord -->
 
 
  
@@ -275,7 +317,7 @@
                         <div class="sidebar-content">
                             <!-- Brand -->
                             <a href="index.html" class="sidebar-brand">
-                                <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>Law3andakDam</strong></span>
+                                <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>{{getSetting()}}</strong></span>
                             </a>
                             <!-- END Brand -->
 
@@ -458,6 +500,58 @@
         </div>
         <!-- END User Settings -->
 
+<!-- new dashord -->
+  <!-- jQuery 2.2.3 --> 
+{!! Html::script('asset/plugins/jQuery/jquery-2.2.3.min.js') !!}
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+{!! Html::script('asset/bootstrap/js/bootstrap.min.js') !!}
+  
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+{!! Html::script('asset/plugins/morris/morris.min.js') !!}
+ 
+<!-- Sparkline -->
+{!! Html::script('asset/plugins/sparkline/jquery.sparkline.min.js') !!}
+ 
+<!-- jvectormap -->
+{!! Html::script('asset/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') !!}
+{!! Html::script('asset/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') !!}
+ 
+<!-- jQuery Knob Chart -->
+{!! Html::script('asset/plugins/knob/jquery.knob.js') !!}
+ 
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+{!! Html::script('asset/plugins/daterangepicker/daterangepicker.js') !!}
+ 
+<!-- datepicker -->
+{!! Html::script('asset/plugins/datepicker/bootstrap-datepicker.js') !!}
+ 
+<!-- Bootstrap WYSIHTML5 -->
+{!! Html::script('asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') !!}
+ 
+<!-- Slimscroll -->
+{!! Html::script('asset/plugins/slimScroll/jquery.slimscroll.min.js') !!}
+ 
+<!-- FastClick -->
+{!! Html::script('asset/plugins/fastclick/fastclick.js') !!}
+ 
+<!-- AdminLTE App -->
+{!! Html::script('asset/dist/js/app.min.js') !!}
+ 
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+{!! Html::script('asset/dist/js/pages/dashboard.js') !!}
+ 
+<!-- AdminLTE for demo purposes -->
+{!! Html::script('asset/dist/js/demo.js') !!}
+  <!-- new dashord -->
+  
 <!-- Validation -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
