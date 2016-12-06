@@ -10,6 +10,7 @@ use App\Http\Requests\RoleRequest;
 
 use App\TeamRole;
 use Datatables;
+use DB;
 
 
 class TeamRolesController extends Controller
@@ -53,14 +54,23 @@ class TeamRolesController extends Controller
     
      // delete roles function
     public function delete(TeamRole $teamrole, $id){
-  
+
+     $used = DB::table('t_roles')->where('id', $id)->pluck('id');
+
+     if($used->count()){
+
+          return redirect('/admin/roles')->with('type_error', 'This Role Is Used !');
+     }
+     else{
+
         if($id != 1){
             
             $teamrole->find($id)->delete();
             
             return redirect('/admin/roles')->withFlashMessage('Role Deleted Successfully');
         }
-         return redirect('/admin/roles');
+      }
+        
     }
 
 

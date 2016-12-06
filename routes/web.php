@@ -5,8 +5,7 @@ use Yajra\Datatables\Datatables;
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+ 
 
 
 # Admin 
@@ -17,7 +16,7 @@ Route::group(['prefix' =>'admin/'], function (){
 Route::get('/dashboard', function () {return view('admin.dashboard');});
 
 
-Route::get('admin/login', function () {return view('admin.login');});
+Route::get('/login', function () {return view('admin.login');});
 	
  #datatables
  Route::get('roles/data',['as'=>'admin.roles.data', 'uses'=>'TeamRolesController@anyData']);
@@ -27,7 +26,6 @@ Route::get('admin/login', function () {return view('admin.login');});
 
  Route::get('/teams/data',['as'=>'admin.teams.data', 'uses'=>'TeamMembersController@anyData']);
 
- Route::get('/doners/data',['as'=>'admin.Doners.data', 'uses'=>'DonersController@anyData']);
 
 
 
@@ -60,10 +58,22 @@ Route::post('/blood_types/update', 'BloodTypesController@update');
 Route::get('/blood_types/{id}/edit', 'BloodTypesController@edit');
 
 
-# user 
-Route::resource('/doners', 'DonersController');
-Route::get('/doners/create', 'DonersController@create');
-Route::post('/doners/create', 'DonersController@store');
+
+Route::get('/Doner', 'DonersController@create');
+Route::post('/Doner', 'DonersController@store');
+
+
+Route::resource('/home', 'L3D_UserController');
+
+Route::get('/NeedBlood', function () {return view('user.blood_needy');});
+
+Route::get('/Terms', function () {return view('user.terms_of_services');});
+
+# contact us
+Route::get('/ContactUs', function () {return view('user.contact_us');});
+Route::post('/sendmail', 'L3D_UserController@basic_email');
+
+
 
 
 # site seting

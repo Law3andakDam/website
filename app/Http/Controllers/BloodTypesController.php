@@ -8,6 +8,7 @@ use App\BloodType;
 use App\Http\Requests;
 use App\Http\Requests\BloodRequest;
 use Datatables;
+use DB;
 
 
 
@@ -43,8 +44,17 @@ class BloodTypesController extends Controller
 
 
     public function delete($id , BloodType $bloodtype ){
-    	$bloodtype->find($id)->delete();
-    	return redirect('/admin/blood_types')->withFlashMessage('Blood Type Deleted Successfully');
+
+    $used = DB::table('doners')->where('blood_type_id', $id)->pluck('blood_type_id');
+
+     if($used->count()){
+
+          return redirect('/admin/blood_types')->with('type_error', 'This Type Is Used !');
+     }
+     else{ 
+      $bloodtype->find($id)->delete();
+      return redirect('/admin/blood_types')->withFlashMessage('Blood Type Deleted Successfully');
+     }
     }
 
 

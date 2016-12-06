@@ -15,29 +15,31 @@ use DB;
 class DonersController extends Controller
 {
      
+    /*
     // function of doners index  
     public function index(){
         
         return view('user.doner.index');
     }
+    */
     
     // function which render new doner form
      public function create(){
           $types = BloodType::pluck('type', 'id');
 
-          return view('user.doner.add',compact('types')); 
+          return view('user.doner',compact('types')); 
     }
     
     // function of adding new doner 
     public function store(DonerRequest $request, Doner $doner){
+
         $doner->create([
-           
             'doner_mobile'=>$request->doner_mobile,
             'doner_email'=>$request->doner_email,
             'blood_type_id'=>$request->blood_type
         ]);
         
-            return redirect('/admin/doners')->withFlashMessage('Doner Added Successfully');
+            return redirect('/admin/home')->withFlashMessage('Yor Information Added Successfully');
     }
 
 

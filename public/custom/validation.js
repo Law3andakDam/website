@@ -147,7 +147,6 @@ $(function(){
           required : true,
           email: true,
           nowhitespace:true,
-       
         },
 
     
@@ -180,7 +179,7 @@ $(function(){
      
        
         },
-        member_email:{
+        doner_email:{
           required : 'This field is required.',
           email : 'Please enter a <em>valid</em> email adress.',
           nowhitespace:'No white spaces allowable!',

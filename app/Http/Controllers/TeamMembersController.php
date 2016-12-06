@@ -70,7 +70,7 @@ class TeamMembersController extends Controller
     
     public function delete($id , TeamMember $teammember){
         $teammember->find($id)->delete();
-         return redirect('admin/teams')->withFlashMessage('Team Member Deleted Successfully');;
+         return redirect('admin/teams')->withFlashMessage('Team Member Deleted Successfully');
     }
     
     
@@ -136,6 +136,8 @@ class TeamMembersController extends Controller
            ->editColumn('member_name', function ($model){
                 return \Html::link('/admin/teams/'. $model->id .'/edit', $model->member_name);  
              })
+
+         
 
            ->editColumn('role_id', function ($model){
                 $role_name = DB::table('t_roles')->where('id', '=' ,$model->role_id)->value('role'); 

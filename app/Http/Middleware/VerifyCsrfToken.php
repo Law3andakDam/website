@@ -38,6 +38,15 @@ class VerifyCsrfToken extends BaseVerifier
         // Doners
         'admin/doners/create',
 
+        // user
+        'admin/home',
+        'admin/Doner',
+        'admin/NeedBlood',
+        'admin/Terms',
+        'admin/ContactUs',
+        'admin/sendmail',
+
+
         // site setting
         'admin/contact_settings',
         'admin/cms_settings',
