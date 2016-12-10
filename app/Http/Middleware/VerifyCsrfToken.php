@@ -13,16 +13,14 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
 
-      
-
-        // roles
+        // Roles
         'admin/roles/create',
         'admin/roles/{id}/edit',
         'admin/roles/{id}/delete',
         'admin/roles/update',
 
         
-        // teams
+        // Team Members
         'admin/teams/create', 
         'admin/teams/{id}/edit',
         'admin/teams/{id}/delete',
@@ -35,24 +33,25 @@ class VerifyCsrfToken extends BaseVerifier
         'admin/blood_types/update',
 
 
-        // Doners
-        'admin/doners/create',
-
-        // user
-        'admin/home',
-        'admin/Doner',
-        'admin/NeedBlood',
-        'admin/Terms',
-        'admin/ContactUs',
-        'admin/sendmail',
-
-
-        // site setting
+        // Site Setting
         'admin/contact_settings',
         'admin/cms_settings',
 
         
-       
+        // Guest
+        '/home',
+        '/Terms',
+        '/AboutUs',
+        '/ContactUs',
+        '/sendmail',
+
+        // Blood Needy
+        '/NeedBlood',
+
+        // Doners     
+        '/Doner/list',
+        '/Doner',
+        
         
     ];
 }

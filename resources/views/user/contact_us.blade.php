@@ -11,7 +11,9 @@
                     <div class="panel-heading text-center">Contact us</div>
                     <div class="panel-body">
 
-                <form class="form-horizontal"  method="POST" action="{{url('/admin/sendmail')}}">
+                <form class="form-horizontal"  method="POST" action="{{url('/sendmail')}}"
+                    id="contact-us-form">
+                                       
 
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">NAME</span>

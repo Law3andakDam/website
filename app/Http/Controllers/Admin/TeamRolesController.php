@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\RoleRequest;
 
@@ -16,34 +15,36 @@ use DB;
 class TeamRolesController extends Controller
 {
     
-    // function of roles index  
+     // Index - Roles DataTable
     public function index(){
         
-        return view('admin.role.index');
+         return view('admin.role.index');
     }
     
-    // function which render new role form
-     public function create(){
+      // Create New Role
+    public function create(){
          
           return view('admin.role.add'); 
     }
     
-    // function of adding new role 
+    // Store Created Role
     public function store(RoleRequest $request, TeamRole $teamrole){
         $teamrole->create([
             'role'=>$request->role,
         ]);
         
-            return redirect('/admin/roles')->withFlashMessage('Role Added Successfully');
+         return redirect('/admin/roles')->withFlashMessage('Role Added Successfully');
     }
     
+
+    // Edit Blood Type
     public function edit(TeamRole $teamrole, $id){
         $teamrole = $teamrole->find($id);
         return view('admin.role.edit',compact('teamrole'));
         
     }
     
-    
+     // Update new data
     public function update( TeamRole $teamrole, RoleRequest $request){
        $updated = $teamrole->find($request->id);
         
@@ -52,25 +53,25 @@ class TeamRolesController extends Controller
     }
     
     
-     // delete roles function
+    // Delete Blood Type
     public function delete(TeamRole $teamrole, $id){
+       // get all roles used in team member table
+       $used = DB::table('t_members')->where('id', $id)->pluck('id');
 
-     $used = DB::table('t_roles')->where('id', $id)->pluck('id');
+       // count if there is existance => alert this role already used
+       if($used->count()){
+            return redirect('/admin/roles')->with('type_error', 'This Role Is Used !');
+       }
+       else{ //if there is no existance  => delete it successfully
 
-     if($used->count()){
-
-          return redirect('/admin/roles')->with('type_error', 'This Role Is Used !');
-     }
-     else{
-
-        if($id != 1){
-            
-            $teamrole->find($id)->delete();
-            
-            return redirect('/admin/roles')->withFlashMessage('Role Deleted Successfully');
+          if($id != 1){
+              
+              $teamrole->find($id)->delete();
+              
+              return redirect('/admin/roles')->withFlashMessage('Role Deleted Successfully');
+          }
         }
-      }
-        
+          
     }
 
 

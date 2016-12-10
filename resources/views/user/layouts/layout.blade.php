@@ -22,6 +22,26 @@
     <link rel="stylesheet" type="text/css" href="/user_interface/css/style.css">
     <!-- Sweet Alerts -->
     <link rel="stylesheet" href="{{URL::asset('custom/sweetalerts/sweetalert.css')}}">
+
+    <!-- Data Tables -->
+    <!-- Bootstrap is included in its original form, unaltered -->
+        <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+
+        <!-- Related styles of various icon packs and plugins -->
+        <link rel="stylesheet" href="{{URL::asset('css/plugins.css')}}">
+
+        <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+        <link rel="stylesheet" href="{{URL::asset('css/main.css')}}">
+
+        <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+
+        <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+        <link rel="stylesheet" href="{{URL::asset('css/themes.css')}}">
+        <!-- END Stylesheets -->
+
+        <!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
+        <script src="{{URL::asset('js/vendor/modernizr-respond.min.js')}}"></script>
+    <!--Data Tables -->
      
 
 </head>
@@ -33,7 +53,7 @@
         <div class="row">
             <div class="logos">
                 <div class="col-xs-12 col-sm-6 col-md-2 text-center">
-                  <a href="{{url('/admin/home')}}">
+                  <a href="{{url('/home')}}">
                     <img src="/user_interface/img/logos/lw3andakdam.png" class="img-responsive">
                   </a>
                 </div>
@@ -60,11 +80,13 @@
 <footer>
     <div class="container">
         <div class="row">
+        <form action="{{url('/home')}}" method="POST">
             <div class="col-xs-12 col-md-4">
                 <label>Sign Up For Our Newsletter</label>
-                <input type="text" class="form-control subscribeInput" placeholder="Enter E-mail Address">
+                <input type="email" name="guest_email" id="guest_email" class="form-control subscribeInput" placeholder="Enter E-mail Address" style="color: #555;">
                 <button class="btn joinBtn">Join</button>
             </div>
+        </form>
             <div class="col-xs-12 col-md-8">
                 <div class="footerLinks">
                     <div class="row">
@@ -90,12 +112,12 @@
                             <h4>ABOUT</h4>
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="{{url('/AboutUs')}}">
                                         <span>About us</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{url('/admin/Terms')}}">
+                                    <a href="{{url('/Terms')}}">
                                         <span>Terms of Services</span>
                                     </a>
                                 </li>
@@ -105,7 +127,12 @@
                             <h4>HELP</h4>
                             <ul>
                                 <li>
-                                    <a href="{{url('/admin/ContactUs')}}">
+                                    <a href="{{url('/Doner/list')}}">
+                                        <span>Doners</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/ContactUs')}}">
                                         <span>Contact us</span>
                                     </a>
                                 </li>
@@ -143,6 +170,28 @@
 <script src="{{URL::asset('custom/sweetalerts/sweetalert.min.js')}}"></script>
 @include('user.layouts.flash_message')
 <!-- End Sweet Alert -->
+
+
+<!-- DataTables -->
+
+<!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+<script src="{{URL::asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
+<script src="{{URL::asset('js/vendor/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('js/plugins.js')}}"></script>
+<script src="{{URL::asset('js/app.js')}}"></script>
+<!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+
+
+
+<!-- Load and execute javascript code used only in this page (DataTable) -->
+        <script src="/js/pages/tablesDatatables.js"></script>
+        <script>$(function () {
+                TablesDatatables.init();
+            });</script>
+
+        @stack('scripts')
+        
+<!-- DataTables -->
 
 </body>
 </html>

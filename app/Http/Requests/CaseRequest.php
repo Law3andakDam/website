@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DonerRequest extends FormRequest
+class CaseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,12 @@ class DonerRequest extends FormRequest
     public function rules()
     {
         return [
-              
-            
+            'case_mobile' => 'required|min:11|max:11',
+            'case_hospital' => 'required|',
+            'case_blood_type' =>'required|',
+            'case_email' =>'required|',
+            'case_name' =>'required|',
+
         ];
     }
 }

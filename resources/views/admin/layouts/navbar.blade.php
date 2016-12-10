@@ -10,13 +10,13 @@
     <span class="sidebar-header-title">Members</span>
 </li>
 <li>
-    <a href="{{ url('admin/doners') }}"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Donors</span></a>
+    <a href="{{ url('/admin/Doners') }}"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Donors</span></a>
 </li>
 <li>
-    <a href="page_widgets_social.html"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Cases</span></a>
+    <a href="{{ url('/admin/Cases') }}"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Cases</span></a>
 </li>
 <li>
-    <a href="page_widgets_social.html"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Sponsers</span></a>
+    <a href="#"><i class="fa fa-hand-o-right sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Sponsers</span></a>
 </li>
 
 

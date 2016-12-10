@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guests;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Mail;
+use App\Guest;
+use DB;
 
 
-class L3D_UserController extends Controller
+class GuestsController extends Controller
 {
+
        public function index(){
-       
+       	
           return view('user.index');
 
        }
@@ -32,6 +36,21 @@ class L3D_UserController extends Controller
 	        $message->from($data['mail'], $data['name']);
 
 	     });
-	       return redirect('admin/home')->withFlashMessage('Your Message Sent Successfully');
+	       return redirect('/home')->withFlashMessage('Your Message Sent Successfully');
+      }
+
+      public function join_Newsletters(Request $request, Guest $guest ){
+
+        // check if guest join before
+       $used = DB::table('guests')->where('email', $request->guest_email)->pluck('email');
+       if($used->count()){
+          // if already joined before.
+          return redirect('/home')->withFlashMessage('Already Exists');
+       }
+       else{ // if not .
+        $guest->create([
+       'email'=> $request->guest_email,
+        ]);
+        return redirect('/home')->withFlashMessage('Welcome to Law3andakDam Family');}
       }
 }

@@ -40,7 +40,7 @@
 <title>{{ config('app.name', 'Laravel') }}</title>
 <!-- Styles -->
 <link href="/css/app.css" rel="stylesheet">
-<!-- new dashord -->
+<!-- New Dashord -->
 
 
  
@@ -351,11 +351,7 @@
                         <!-- END Left Header Navigation -->
 
                         <!-- Search Form -->
-                        <form action="page_ready_search_results.html" method="post" class="navbar-form-custom">
-                            <div class="form-group">
-                                <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Search..">
-                            </div>
-                        </form>
+                      
                         <!-- END Search Form -->
 
                         <!-- Right Header Navigation -->
@@ -533,11 +529,13 @@
   <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>
   <script src="{{URL::asset('/custom/validation.js')}}"></script>
 <!-- Validation -->
+
         <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
         <script src="{{URL::asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
         <script src="{{URL::asset('js/vendor/bootstrap.min.js')}}"></script>
         <script src="{{URL::asset('js/plugins.js')}}"></script>
         <script src="{{URL::asset('js/app.js')}}"></script>
+        <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
 
         <!-- Sweet Alert -->
         <script src="{{URL::asset('custom/sweetalerts/sweetalert.min.js')}}"></script>

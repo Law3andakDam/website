@@ -1,12 +1,14 @@
-@extends('admin.layouts.layout')
+@extends('user.layouts.layout')
 
 @section('content')
 
 
+<div style=" width: 80%;   margin-left: 10%; margin-top: 5%">
+
 <!-- Datatables Content -->
 <div class="block full">
     <div class="block-title">
-        <h2><strong>Doners</strong> </h2>
+        <h2 style="margin-left: 40%;"><strong>Doners </strong> </h2>
     </div>
                                
     <div>
@@ -28,6 +30,7 @@
         </thead>
     </table>
     </div>
+ </div>
 @stop
 
 @push('scripts')
@@ -36,7 +39,8 @@ $(function() {
     $('#users-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! url('admin/Doners/data') !!}',
+          
+        ajax: '{!! url('Doners/data') !!}',
         columns: [
 
            

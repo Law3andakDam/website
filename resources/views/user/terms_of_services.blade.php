@@ -4,20 +4,29 @@
 
 @section('content')
 
-<p><strong>INTRODUCTION</strong></p>
-{{getIntroduction()}}
+<div style="margin-left: 5%; margin-right:5%; margin-bottom:5%;">
+
+<h2 style=" font-family: Arial, Helvetica, sans-serif; color: #3a3b38;">Introduction</h2>
+<h4 style="color:#3a3b38;">{{getIntroduction()}}</h4>
 <br><br>
 
-<p><strong>BLOOD DONORS﻿</strong></p>
-{{getBloodDoners()}}
+
+<h2 style=" font-family: Arial, Helvetica, sans-serif; color: #3a3b38;">Blood Doners</h2>
+
+<h4 style="color:#3a3b38;">{{getBloodDoners()}}</h4>
 <br><br>
 
-<p><strong>﻿CONFIDENTIALITY</strong></p>
-{{getConfidentiality()}}
+
+<h2 style=" font-family: Helvetica, Arial, sans-serif; color: #3a3b38;">Confidentiality</h2>
+
+<h4 style="color:#3a3b38;">{{getConfidentiality()}}</h4>
 <br><br>
 
-<p><strong>LAW3ANDAKDAM RIGHTS</strong></p>
-{{getLaw3andakDamRights()}}
+<h2 style=" font-family: Helvetica, Arial, sans-serif; color: #3a3b38;">Law3andakDam Rights</h2>
 
+<h4 style="color:#3a3b38;">{{getLaw3andakDamRights()}}</h4>
+
+</div>
 
 @endsection
+

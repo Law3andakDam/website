@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TeamRequest;
@@ -18,25 +19,24 @@ class TeamMembersController extends Controller
 {
 
  
-
+    // Index - Team Members DataTable
     public function index(){
        
         return view('admin.team.index');
     }
     
-
-     public function create(){
+    // Create New Team Member
+    public function create(){
       
-      $roles = TeamRole::pluck('role', 'id');
+       $roles = TeamRole::pluck('role', 'id');
        return view('admin.team.add',compact('roles'));
 
      }
     
-
-
+    // Store Created Team Member
     public function store(TeamRequest $request, TeamMember $teammember){
       
-
+      // as personal image is optional
       if($request->file('member_image')){
            
             $fileName = $request->file('member_image')->getClientOriginalName();   
@@ -46,14 +46,12 @@ class TeamMembersController extends Controller
           
           $image = $fileName;
           
-            }
+       }
 
-          else{
+      else{
           $image ='';
-           }
+       }
     
-        
-
 
         $teammember->create([
             'member_name'=>$request->member_name,
@@ -68,12 +66,8 @@ class TeamMembersController extends Controller
          return redirect('admin/teams')->withFlashMessage('Team Member Added Successfully');
     }
     
-    public function delete($id , TeamMember $teammember){
-        $teammember->find($id)->delete();
-         return redirect('admin/teams')->withFlashMessage('Team Member Deleted Successfully');
-    }
-    
-    
+   
+    // Edit Team Member 
     public function edit(TeamMember $teammember , $id){
 
         $roles = TeamRole::pluck('role', 'id');
@@ -82,16 +76,12 @@ class TeamMembersController extends Controller
         return view('admin.team.edit',compact('teammember','roles'));
     }
     
-    
+      // Update New Data
     public function update( TeamRequest $request, TeamMember $teammember){
      
         $roles = TeamRole::pluck('role');
         $arr[] = (array)$roles;
         $found = 0;
-          
-
-
-      
      
         foreach ($roles as $key => $value) {
             if($value == $request->role_id){$found = 1;}
@@ -123,11 +113,16 @@ class TeamMembersController extends Controller
        return redirect('admin/teams')->withFlashMessage('Team Member Updated Successfully');
     }
     
-  
+    // Delete Team Member
+    public function delete($id , TeamMember $teammember){
+        $teammember->find($id)->delete();
+         return redirect('admin/teams')->withFlashMessage('Team Member Deleted Successfully');
+    }
+    
     
 
-   // initialize dataTable of roles function
-   public function anyData(TeamMember $teammember){
+    // initialize dataTable of roles function
+    public function anyData(TeamMember $teammember){
 
       $teammembers = $teammember->all();
     

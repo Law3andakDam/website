@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guests;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -15,13 +16,20 @@ use DB;
 class DonersController extends Controller
 {
      
-    /*
+    
     // function of doners index  
     public function index(){
         
         return view('user.doner.index');
     }
-    */
+
+     // function of doners index  
+    public function show_doner_list(){
+        
+        return view('user.doners_list');
+    }
+    
+    
     
     // function which render new doner form
      public function create(){
@@ -33,13 +41,22 @@ class DonersController extends Controller
     // function of adding new doner 
     public function store(DonerRequest $request, Doner $doner){
 
-        $doner->create([
+      // check if doner join before
+       $used = DB::table('doners')
+                   ->where('doner_email', $request->doner_email)->pluck('doner_email');
+       if($used->count()){
+         return redirect('/home')->withFlashMessage('Already Exists');
+       }
+       else{
+                $doner->create([
             'doner_mobile'=>$request->doner_mobile,
             'doner_email'=>$request->doner_email,
             'blood_type_id'=>$request->blood_type
         ]);
         
-            return redirect('/admin/home')->withFlashMessage('Yor Information Added Successfully');
+          return redirect('/home')->withFlashMessage('Your Information Added Successfully');
+       }
+
     }
 
 
@@ -49,12 +66,12 @@ class DonersController extends Controller
 
       $doners = $doner->all();
     
-      return Datatables::of($doners )
+      return Datatables::of($doners)
    
 
            ->editColumn('blood_type_id', function ($model){
-                $role_name = DB::table('blood_type')->where('id', '=' ,$model->blood_type_id)->value('type'); 
-                return $role_name;
+                $blood_type_name = DB::table('blood_type')->where('id', '=' ,$model->blood_type_id)->value('type'); 
+                return $blood_type_name;
              })
 
            ->editColumn('control', function ($model){
