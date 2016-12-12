@@ -24,10 +24,7 @@ class TeamRequest extends FormRequest
     public function rules()
     {
         return [
-        'member_name' =>'required | min:3',
-        'member_email' =>'required|min:4',
-        'member_mobile'=>'required|min:11|max:11',
-        'member_image'=>'mimes:png,jpg,jpeg',
+       
         ];
     }
 }

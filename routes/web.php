@@ -4,7 +4,7 @@
 use Yajra\Datatables\Datatables;
 
 
-Auth::routes();
+
  
     # Doners.
 	Route::get('/Doners/data',['as'=>'Doners.data', 
@@ -14,8 +14,8 @@ Auth::routes();
 	# Guest => GuestsController [start]
 
 	# HomePage
-	Route::resource('/home', 'Guests\GuestsController');
-	Route::post('/home', 'Guests\GuestsController@join_Newsletters');
+	Route::resource('/Home', 'Guests\GuestsController');
+	Route::post('/Home', 'Guests\GuestsController@join_Newsletters');
 	# Contact us
 	Route::get('/ContactUs', function () {return view('user.contact_us');});
 	Route::post('/sendmail', 'Guests\GuestsController@basic_email');
@@ -48,6 +48,7 @@ Auth::routes();
 
 
 
+
 # Admin 
 Route::group(['prefix' =>'admin/'], function (){
 
@@ -72,16 +73,20 @@ Route::group(['prefix' =>'admin/'], function (){
 		                       'uses'=>'Guests\DonersController@anyData']); 
 
 	# Admin => Login Page.
-		Route::get('/', function () {return view('admin.login');});
+	//Route::get('/login', function () {return view('auth.login');});
+		Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 	# Admin => Dashboard.
-		Route::get('/dashboard', function () {return view('admin.dashboard');});
+		Route::get('/dashboard', function () {
+			return view('admin.dashboard');})->middleware('auth');
 
 
 	# Admin => Cases.	
 		Route::resource('/Cases', 'Guests\BloodNeedyController');
 	# Admin => Doners.	
-	Route::resource('/Doners', 'Guests\DonersController');
+	    Route::resource('/Doners', 'Guests\DonersController');
+	#change information
+	    Route::post('/ChangeInformation', 'Admin\UserController@ChangeInfo');
 	 
 
 
@@ -166,3 +171,7 @@ Route::group(['prefix' =>'admin/'], function (){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

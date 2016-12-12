@@ -41,7 +41,7 @@ class BloodNeedyController extends Controller
             'blood_type_id'=>$request->case_blood_type
         ]);
         
-            return redirect('/home')->withFlashMessage('Your Request Sent Successfully');
+            return redirect('/Home')->withFlashMessage('Your Request Sent Successfully');
     }
 
 

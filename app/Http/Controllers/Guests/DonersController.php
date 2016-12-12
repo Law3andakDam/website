@@ -45,7 +45,7 @@ class DonersController extends Controller
        $used = DB::table('doners')
                    ->where('doner_email', $request->doner_email)->pluck('doner_email');
        if($used->count()){
-         return redirect('/home')->withFlashMessage('Already Exists');
+         return redirect('/Home')->withFlashMessage('Already Exists');
        }
        else{
                 $doner->create([
@@ -54,7 +54,7 @@ class DonersController extends Controller
             'blood_type_id'=>$request->blood_type
         ]);
         
-          return redirect('/home')->withFlashMessage('Your Information Added Successfully');
+          return redirect('/Home')->withFlashMessage('Your Information Added Successfully');
        }
 
     }

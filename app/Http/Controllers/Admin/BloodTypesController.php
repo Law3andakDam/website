@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+ 
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -15,6 +16,11 @@ use DB;
 
 class BloodTypesController extends Controller
 {
+
+  public function __construct(){
+
+    $this->middleware('auth');
+   }
 
   // Index - BloodTypes DataTable
   public function index(){

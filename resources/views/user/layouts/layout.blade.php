@@ -9,6 +9,7 @@
     <!-- Browser Icon -->
       <link rel="shortcut icon" type="image/x-icon" href="/user_interface/img/logos/lw3andakdam.png" />
     <!-- Website Title -->
+    
     <title>Law3andakDam - لو عندك دم</title>
     <!-- Include bootstrap.min.css -->
     <link rel="stylesheet" type="text/css" href="/user_interface/css/bootstrap.min.css">
@@ -53,7 +54,7 @@
         <div class="row">
             <div class="logos">
                 <div class="col-xs-12 col-sm-6 col-md-2 text-center">
-                  <a href="{{url('/home')}}">
+                  <a href="{{url('/Home')}}">
                     <img src="/user_interface/img/logos/lw3andakdam.png" class="img-responsive">
                   </a>
                 </div>
@@ -80,10 +81,12 @@
 <footer>
     <div class="container">
         <div class="row">
-        <form action="{{url('/home')}}" method="POST">
+        <form action="{{url('/Home')}}" method="POST">
             <div class="col-xs-12 col-md-4">
+
+             {{ csrf_field() }}
                 <label>Sign Up For Our Newsletter</label>
-                <input type="email" name="guest_email" id="guest_email" class="form-control subscribeInput" placeholder="Enter E-mail Address" style="color: #555;">
+                <input type="email" name="guest_email" id="guest_email" class="form-control subscribeInput" placeholder="Enter E-mail Address" style="color: #555;" required>
                 <button class="btn joinBtn">Join</button>
             </div>
         </form>

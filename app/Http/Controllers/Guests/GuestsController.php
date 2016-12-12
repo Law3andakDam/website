@@ -36,7 +36,7 @@ class GuestsController extends Controller
 	        $message->from($data['mail'], $data['name']);
 
 	     });
-	       return redirect('/home')->withFlashMessage('Your Message Sent Successfully');
+	       return redirect('/Home')->withFlashMessage('Your Message Sent Successfully');
       }
 
       public function join_Newsletters(Request $request, Guest $guest ){
@@ -45,12 +45,12 @@ class GuestsController extends Controller
        $used = DB::table('guests')->where('email', $request->guest_email)->pluck('email');
        if($used->count()){
           // if already joined before.
-          return redirect('/home')->withFlashMessage('Already Exists');
+          return redirect('/Home')->withFlashMessage('Already Exists');
        }
        else{ // if not .
         $guest->create([
        'email'=> $request->guest_email,
         ]);
-        return redirect('/home')->withFlashMessage('Welcome to Law3andakDam Family');}
+        return redirect('/Home')->withFlashMessage('Welcome to Law3andakDam Family');}
       }
 }

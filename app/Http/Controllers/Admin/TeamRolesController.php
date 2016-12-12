@@ -14,6 +14,10 @@ use DB;
 
 class TeamRolesController extends Controller
 {
+    public function __construct(){
+
+    $this->middleware('auth');
+    }
     
      // Index - Roles DataTable
     public function index(){
@@ -56,7 +60,7 @@ class TeamRolesController extends Controller
     // Delete Blood Type
     public function delete(TeamRole $teamrole, $id){
        // get all roles used in team member table
-       $used = DB::table('t_members')->where('id', $id)->pluck('id');
+       $used = DB::table('t_members')->where('role_id', $id)->pluck('role_id');
 
        // count if there is existance => alert this role already used
        if($used->count()){

@@ -17,6 +17,10 @@ use DB;
 
 class TeamMembersController extends Controller
 {
+    public function __construct(){
+
+    $this->middleware('auth');
+    }
 
  
     // Index - Team Members DataTable
@@ -35,6 +39,7 @@ class TeamMembersController extends Controller
     
     // Store Created Team Member
     public function store(TeamRequest $request, TeamMember $teammember){
+
       
       // as personal image is optional
       if($request->file('member_image')){
@@ -51,9 +56,9 @@ class TeamMembersController extends Controller
       else{
           $image ='';
        }
-    
-
+        
         $teammember->create([
+
             'member_name'=>$request->member_name,
             'member_mobile'=>$request->member_mobile,
             'member_email'=>$request->member_email,

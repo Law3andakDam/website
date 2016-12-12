@@ -11,6 +11,11 @@ use App\CMS;
 
 class SiteSettingsController extends Controller
 {
+    public function __construct(){
+
+     $this->middleware('auth');
+    }
+
     // Contact Page.
     public function ContactsIndex(Contact $contact){
            

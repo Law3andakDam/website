@@ -6,25 +6,18 @@
         <meta charset="utf-8">
 
         <title>L3D Admin Login</title>
+        
 
         <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+         
+         <!-- Browser Icon -->
+         <link rel="shortcut icon" type="image/x-icon" href="/user_interface/img/logos/lw3andakdam.png" >
+         <!-- END Icons -->
 
-        <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{URL::asset('img/favicon.png')}}">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon57.png')}}" sizes="57x57">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon72.png')}}" sizes="72x72">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon76.png')}}" sizes="76x76">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon114.png')}}" sizes="114x114">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon120.png')}}" sizes="120x120">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon144.png')}}" sizes="144x144">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon152.png')}}" sizes="152x152">
-        <link rel="apple-touch-icon" href="{{URL::asset('img/icon180.png')}}" sizes="180x180">
-        <!-- END Icons -->
 
         <!-- Stylesheets -->
         <!-- Bootstrap is included in its original form, unaltered -->
@@ -45,11 +38,27 @@
         <!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
         <script src="{{URL::asset('js/vendor/modernizr-respond.min.js')}}"></script>
     </head>
+
     <body>
-        <!-- Login Full Background -->
-        <!-- For best results use an image with a resolution of 1280x1280 pixels (prefer a blurred image for smaller file size) -->
-        <img src="{{URL::asset('img/placeholders/backgrounds/login_full_bg.jpg')}}" alt="Login Full Background" class="full-bg animation-pulseSlow">
+   
+        <img src="/user_interface/img/Homepage_background.png" alt="Login Full Background" class="full-bg animation-pulseSlow">
         <!-- END Login Full Background -->
+
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="logos">
+                        <div class="col-xs-12 col-sm-6 col-md-2 text-center">
+                          <a href="{{url('/Home')}}">
+                            <img src="/user_interface/img/logos/lw3andakdam.png" class="img-responsive">
+                          </a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </nav>
 
         <!-- Login Container -->
         <div id="login-container" class="animation-fadeIn">
@@ -62,32 +71,40 @@
             <!-- Login Block -->
             <div class="block push-bit">
                 <!-- Login Form -->
-                <form action="{{url('/admin/dashboard')}}" method="get" id="form-login" class="form-horizontal form-bordered form-control-borderless">
-                    <div class="form-group">
+                <form action="{{url('/admin/dashboard')}}" method="POST" id="form-login" class="form-horizontal form-bordered form-control-borderless">
+
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <div class="col-xs-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
-                                <input type="text" id="login-email" name="login-email" class="form-control input-lg" placeholder="Email">
+                                <input type="email" id="email" name="email" class="form-control input-lg" placeholder="Email" value="{{ old('email') }}" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="col-xs-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
-                                <input type="password" id="login-password" name="login-password" class="form-control input-lg" placeholder="Password">
+                                <input type="password" id="password" name="password" class="form-control input-lg" placeholder="Password" required>
+                                 @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="form-group form-actions">
-                        <div class="col-xs-4">
-                            <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
-                                <input type="checkbox" id="login-remember-me" name="login-remember-me" checked>
-                                <span></span>
-                            </label>
-                        </div>
-                        <div class="col-xs-8 text-right">
-                            <button type="submit" class="btn btn-sm btn-primary">Login </button>
+                        
+                        <div class="col-xs-7 text-right">
+                            <button type="submit" class="btn btn-sm btn-primary">Log---in </button>
                         </div>
                     </div>
                     <div class="form-group">
