@@ -53,7 +53,7 @@ class TeamRolesController extends Controller
        $updated = $teamrole->find($request->id);
         
        $updated->fill($request->all())->save();
-          return redirect('/admin/roles');
+          return redirect('/admin/roles')->with('edit_done', 'Role Updated Successfully');
     }
     
     
