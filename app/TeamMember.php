@@ -15,7 +15,7 @@ class TeamMember extends Model
         'member_email', 
         'member_mobile', 
         'role_id',
-        'password',
+        
     ];
 
 
