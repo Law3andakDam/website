@@ -1,14 +1,113 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>lawandakdam</title>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Website Title -->
+    <title>law 3andak dam</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Titillium+Web:300', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <nav>
+      <div class="container">
+        <div class="row">
+          <div class="logos">
+            <div class="col-xs-12 col-sm-6 col-md-2 text-center">
+              <a href="<%= root_url %>">
+                <%= image_tag('logos/lw3andakdam', class: 'img-responsive') %>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-2 text-center">
+              <a href="http://desktop.bey2ollak.com/" target="_blank">
+                <%= image_tag('logos/bey2olak', class: 'img-responsive') %>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-8 text-right">
+            <%= image_tag('icons/menu_icon') %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
+
+    <footer>
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-xs-12 col-md-4">
+  					<label>Sign Up For Our Newsletter</label>
+  					<input type="text" class="form-control subscribeInput" placeholder="Enter E-mail Address">
+  					<button class="btn joinBtn">Join</button>
+  				</div>
+  				<div class="col-xs-12 col-md-8">
+  					<div class="footerLinks">
+  						<div class="row">
+  							<div class="col-xs-12 col-md-4">
+  								<h4>CONNECT</h4>
+  								<ul>
+  									<li>
+  										<a href="https://www.facebook.com/Law3andakdam" target="_blank">
+  											<i class="fa fa-facebook"></i>
+  											<span>Facebook</span>
+  										</a>
+  									</li>
+  									<li>
+  										<a href="https://twitter.com/Law3andakDam" target="_blank">
+  											<i class="fa fa-twitter"></i>
+  											<span>Twitter</span>
+  										</a>
+  									</li>
+  								</ul>
+  							</div>
+  							<div class="col-xs-12 col-md-4">
+  								<h4>ABOUT</h4>
+  								<ul>
+  									<li>
+  										<a href="<%= about_url %>">
+  											<span>About us</span>
+  										</a>
+  									</li>
+  									<li>
+  										<a href="<%= terms_url %>">
+  											<span>Terms of Services</span>
+  										</a>
+  									</li>
+  								</ul>
+  							</div>
+  							<div class="col-xs-12 col-md-4">
+  								<h4>HELP</h4>
+  								<ul>
+                    <li>
+  										<a href="javascript:void(0);">
+  											<span>Doners</span>
+  										</a>
+  									</li>
+  									<li>
+  										<a href="<%= contact_url %>">
+  											<span>Contact us</span>
+  										</a>
+  									</li>
+  								</ul>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-xs-12 text-center">
+  					<p>Copyright @copy 2016 <a href="http://www.law3andakdam.com/">http://www.law3andakdam.com/</a> All Right Reserved ♥ Made With Love From Egypt</p>
+  				</div>
+  			</div>
+  		</div>
+  	</footer>
   </body>
 </html>
