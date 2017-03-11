@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  get 'pages/about'
-  get 'pages/contact'
+
+  %i(about contact terms).each do |page|
+    get page, to: "pages##{page}", as: page
+  end
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
