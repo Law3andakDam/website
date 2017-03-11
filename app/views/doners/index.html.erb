@@ -1,2 +1,30 @@
-<h1>Doners#index</h1>
-<p>Find me in app/views/doners/index.html.erb</p>
+<div style=" width: 80%; margin-left: 10%; margin-top: 5%; background-color: white; padding: 2%">
+  <div class="block full">
+    <div class="block-title">
+      <h2 class="text-center">
+        <strong>Doners</strong>
+      </h2>
+    </div>
+    <div id="users-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+      <table class="table table-bordered dataTable no-footer">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Blood Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @doners.each do |doner| %>
+            <tr>
+              <td><%= doner.email %></td>
+              <td><%= doner.mobile %></td>
+              <td><%= doner.blood_type.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @doners %>
+    </div>
+  </div>
+</div>

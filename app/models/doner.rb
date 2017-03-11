@@ -7,6 +7,8 @@ class Doner < ApplicationRecord
   before_validation :set_confirmation_token
   after_commit :send_confirmation_mail, on: :create
 
+  scope :actived, -> { where.not(confirmed_at: nil) }
+
   def send_confirmation_mail
     DonerMailer.confirmation_email(self).deliver_later
   end

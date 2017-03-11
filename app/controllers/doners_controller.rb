@@ -1,5 +1,7 @@
 class DonersController < ApplicationController
-  def index; end
+  def index
+    @doners = Doner.includes(:blood_type).actived.page(params[:page] || 1)
+  end
 
   def new
     @doner = Doner.new
