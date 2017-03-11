@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :doners, only: %i(new index create) do
     get :confirmation, on: :collection
   end
+
+  resources :cases, only: %i(new create)
+
   mount Sidekiq::Web => '/sidekiq/jobs'
 
   %i(about contact terms).each do |page|

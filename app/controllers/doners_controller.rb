@@ -5,7 +5,7 @@ class DonersController < ApplicationController
 
   def new
     @doner = Doner.new
-    load_types
+    load_blood_types
   end
 
   def create
@@ -13,7 +13,7 @@ class DonersController < ApplicationController
     if @doner.save
       redirect_to doners_url, notice: "a confirmation mail send to #{@doner.email}, please click the confirmation link."
     else
-      load_types
+      load_blood_types
       render :new
     end
   end
@@ -28,9 +28,5 @@ class DonersController < ApplicationController
 
   def doner_params
     params.require(:doner).permit(:email, :mobile, :blood_type_id)
-  end
-
-  def load_types
-    @blood_types = BloodType.all
   end
 end

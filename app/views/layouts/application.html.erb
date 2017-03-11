@@ -14,7 +14,6 @@
   </head>
 
   <body>
-
     <nav>
       <div class="container">
         <div class="row">
@@ -37,6 +36,12 @@
         </div>
       </div>
     </nav>
+
+    <div class="row text-center">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
