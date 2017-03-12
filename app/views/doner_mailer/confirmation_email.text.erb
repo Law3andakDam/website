@@ -1,0 +1,6 @@
+<%= @greeting %>, find me in app/views/doner_mailer/confirmation_email.text.erb
+welcome <%= @doner.email %>
+
+You can confirm your account email through the link below:
+
+<%= confirmation_doners_url(confirmation_token: @doner.confirmation_token) %>
